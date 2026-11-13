@@ -1,12 +1,12 @@
 # SOC Alert Enrichment & Investigation Automation
 
-A Python-based Blue Team automation project that processes security alerts, extracts indicators, enriches public IP addresses with threat intelligence, calculates risk scores, and generates investigation reports.
+A Python-based Blue Team automation project that processes security alerts, extracts indicators, enriches eligible public IP addresses with threat intelligence, calculates risk scores, and generates investigation reports.
 
 ## Project Overview
 
-Security Operations Center (SOC) analysts often spend significant time manually collecting indicator information, checking threat intelligence sources, assessing risk, and preparing investigation reports.
+Security Operations Center (SOC) analysts spend considerable time manually collecting indicator information, checking threat intelligence sources, assessing risk, and preparing investigation reports.
 
-This project automates those repetitive investigation steps through a modular Python pipeline.
+This project automates these repetitive investigation steps through a modular Python pipeline.
 
 ## Architecture
 
@@ -14,24 +14,24 @@ This project automates those repetitive investigation steps through a modular Py
              Sample Security Alert
                        |
                        v
-               Alert Ingestion
+                Alert Ingestion
                        |
                        v
-                IOC Extraction
+                 IOC Extraction
                        |
                        v
               Threat Intelligence
-               /             \
-         VirusTotal        AbuseIPDB
-               \             /
+                /             \
+          VirusTotal        AbuseIPDB
+                \             /
                        |
                        v
-                 Risk Scoring
+                  Risk Scoring
                        |
                        v
               Investigation Report
                  /           \
-              JSON           HTML
+               JSON          HTML
 ```
 
 ## Key Features
@@ -39,12 +39,12 @@ This project automates those repetitive investigation steps through a modular Py
 - **Alert ingestion:** Validates and normalizes incoming security alerts.
 - **IOC extraction:** Extracts IP addresses, URLs, domains, and file hashes.
 - **Threat intelligence enrichment:** Queries VirusTotal and AbuseIPDB for eligible public IP addresses.
-- **Risk assessment:** Calculates transparent heuristic risk scores using alert severity and available intelligence.
+- **Risk assessment:** Calculates transparent heuristic risk scores using alert severity and available threat intelligence.
 - **Automated reporting:** Generates JSON and HTML investigation reports.
 - **Pipeline orchestration:** Executes processing stages sequentially and validates their outputs.
 - **Logging and error handling:** Records execution details and stops processing when a stage fails.
-- **Offline testing:** Supports mock threat intelligence responses for repeatable testing without external API calls.
-- **Automated tests:** Includes unit, integration, and full-pipeline tests.
+- **Offline testing:** Supports mock threat intelligence responses without external API requests.
+- **Automated testing:** Includes unit, integration, and full-pipeline tests.
 
 ## Technology Stack
 
@@ -62,13 +62,10 @@ This project automates those repetitive investigation steps through a modular Py
 
 ```text
 SOC-Alert-Enrichment/
-|
 ├── input/
 │   └── sample_alert.json
-|
 ├── output/
 │   └── .gitkeep
-|
 ├── src/
 │   ├── __init__.py
 │   ├── alert_ingestion.py
@@ -77,17 +74,12 @@ SOC-Alert-Enrichment/
 │   ├── risk_scoring.py
 │   ├── report_generator.py
 │   └── main.py
-|
 ├── tests/
 │   ├── test_risk_scoring.py
 │   ├── test_risk_scoring_integration.py
 │   └── test_full_pipeline.py
-|
 ├── logs/
 │   └── .gitkeep
-|
-├── docs/
-├── reports/
 ├── .env.example
 ├── .gitignore
 ├── requirements.txt
@@ -98,20 +90,20 @@ SOC-Alert-Enrichment/
 
 Clone the repository:
 
-```bash
+```powershell
 git clone YOUR_GITHUB_REPOSITORY_URL
 cd SOC-Alert-Enrichment
 ```
 
 Create a virtual environment:
 
-```bash
+```powershell
 python -m venv .venv
 ```
 
 Install dependencies:
 
-```bash
+```powershell
 .venv\Scripts\python.exe -m pip install -r requirements.txt
 ```
 
@@ -135,13 +127,13 @@ Never commit `.env` or expose API credentials in source code.
 
 ## Running the Project
 
-Run the complete pipeline:
+Execute the complete pipeline:
 
 ```powershell
-.\.venv\Scripts\python.exe src\main.py
+.venv\Scripts\python.exe src\main.py
 ```
 
-The pipeline executes the following stages:
+The pipeline executes five stages:
 
 1. Alert ingestion and normalization.
 2. IOC extraction.
@@ -155,7 +147,7 @@ Generated reports are written to the local `output/` directory.
 
 The project supports mock threat intelligence responses.
 
-Set this environment variable in `.env`:
+Set the following variable in `.env`:
 
 ```env
 SOC_TEST_MODE=1
@@ -164,20 +156,20 @@ SOC_TEST_MODE=1
 Then execute:
 
 ```powershell
-.\.venv\Scripts\python.exe src\main.py
+.venv\Scripts\python.exe src\main.py
 ```
 
-This allows the pipeline to be tested without making external threat intelligence API requests.
+This runs the pipeline without making external threat intelligence API requests.
 
 ## Running Tests
 
 Execute the complete test suite:
 
 ```powershell
-.\.venv\Scripts\python.exe -m pytest -v
+.venv\Scripts\python.exe -m pytest -v
 ```
 
-The test suite covers risk scoring, integration workflows, and full pipeline execution.
+The current test suite contains 23 tests covering risk scoring, integration workflows, and full-pipeline execution.
 
 ## Risk Scoring Methodology
 
@@ -187,7 +179,8 @@ The current scoring model uses:
 - VirusTotal malicious detection counts.
 - AbuseIPDB confidence scores.
 - Historical report volume, subject to a confidence threshold.
-- Threat intelligence provider response availability.
+
+Threat intelligence provider availability is tracked separately as coverage metadata and contributes zero risk points. Missing intelligence data does not artificially increase or decrease the risk score.
 
 Risk levels:
 
@@ -198,7 +191,7 @@ Risk levels:
 | 50–74 | High |
 | 75–100 | Critical |
 
-The model is a triage heuristic, not a statistically calibrated probability of compromise. Scores should support analyst investigation, not replace analyst judgment.
+The model is a rule-based triage heuristic, not a statistically calibrated probability of compromise. Scores should support investigation and analyst decision-making, not replace analyst judgment.
 
 ## Security Considerations
 
