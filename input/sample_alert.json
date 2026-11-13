@@ -1,0 +1,12 @@
+
+{
+  "alert_id": "INC-2026-001",
+  "alert_name": "Suspicious Outbound Connection",
+  "source_ip": "192.0.2.10",
+  "destination_ip": "198.51.100.25",
+  "username": "user01",
+  "hostname": "WIN-USER01",
+  "severity": "Medium",
+  "description": "A user accessed https://example.com/login from 8.8.8.8. Downloaded file SHA256: a3f5c8d1e2b4a697f0c3d5e8b1a4c6f9d2e5b8a1c4f7d0e3b6a9c2f5d8e1b4a7. File MD5: d41d8cd98f00b204e9800998ecf8427e. File SHA1: da39a3ee5e6b4b0d3255bfef95601890afd80709.",
+  "detection_source": "Microsoft Sentinel"
+}
