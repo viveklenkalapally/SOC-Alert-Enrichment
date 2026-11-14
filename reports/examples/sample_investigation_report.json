@@ -1,0 +1,137 @@
+
+{
+  "data_classification": "SYNTHETIC LAB DATA - NOT REAL SECURITY TELEMETRY",
+  "enrichment_mode": "OFFLINE MOCK MODE - NO LIVE API LOOKUPS",
+  "report_id": "REPORT-DEMO-001",
+  "generated_at": "2026-11-13T13:04:07.509762+00:00",
+  "alert_summary": {
+    "alert_id": "DEMO-INC-001",
+    "alert_name": "Suspicious Outbound Connection",
+    "severity": "medium",
+    "detection_source": "Microsoft Sentinel (simulated lab alert)",
+    "username": "lab-user",
+    "hostname": "LAB-WINDOWS-01",
+    "description": "Synthetic lab alert: A user accessed https://example.com/login from documentation IP 203.0.113.25. Downloaded file SHA256: a3f5c8d1e2b4a697f0c3d5e8b1a4c6f9d2e5b8a1c4f7d0e3b6a9c2f5d8e1b4a7. File MD5: d41d8cd98f00b204e9800998ecf8427e. File SHA1: da39a3ee5e6b4b0d3255bfef95601890afd80709."
+  },
+  "indicators_of_compromise": {
+    "ips": [
+      {
+        "address": "192.0.2.10",
+        "classification": "Reserved documentation IP (TEST-NET)",
+        "external_reputation_checked": false
+      },
+      {
+        "address": "198.51.100.25",
+        "classification": "Reserved documentation IP (TEST-NET)",
+        "external_reputation_checked": false
+      },
+      {
+        "address": "203.0.113.25",
+        "classification": "Reserved documentation IP (TEST-NET)",
+        "external_reputation_checked": false
+      }
+    ],
+    "domains": [
+      "example.com"
+    ],
+    "urls": [
+      "https://example.com/login"
+    ],
+    "hashes": {
+      "md5": [
+        "d41d8cd98f00b204e9800998ecf8427e"
+      ],
+      "sha1": [
+        "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+      ],
+      "sha256": [
+        "a3f5c8d1e2b4a697f0c3d5e8b1a4c6f9d2e5b8a1c4f7d0e3b6a9c2f5d8e1b4a7"
+      ]
+    }
+  },
+  "threat_intelligence": [
+    {
+      "ip": "203.0.113.25",
+      "virustotal": {
+        "status": "success",
+        "reputation": 0,
+        "analysis_stats": {
+          "malicious": 0,
+          "suspicious": 0,
+          "harmless": 60,
+          "undetected": 40
+        }
+      },
+      "abuseipdb": {
+        "status": "success",
+        "abuse_confidence_score": 0,
+        "total_reports": 0,
+        "country_code": "TEST",
+        "usage_type": "Test Data",
+        "isp": "Mock Provider"
+      }
+    }
+  ],
+  "risk_assessment": {
+    "overall_score": 15,
+    "overall_level": "Low",
+    "recommended_action": "Continue monitoring and retain evidence.",
+    "ip_assessments": [
+      {
+        "ip": "203.0.113.25",
+        "risk_score": 15,
+        "risk_level": "Low",
+        "factors": {
+          "virustotal": {
+            "status": "success",
+            "malicious_detections": 0,
+            "points": 0
+          },
+          "abuseipdb": {
+            "status": "success",
+            "abuse_confidence_score": 0,
+            "total_reports": 0,
+            "confidence_points": 0,
+            "report_volume_points": 0
+          },
+          "data_quality": {
+            "successful_sources": 2,
+            "total_sources": 2,
+            "coverage": "Complete",
+            "points": 0
+          },
+          "total_intelligence_points": 0
+        },
+        "reasons": [],
+        "alert_severity": "Medium",
+        "severity_points": 15,
+        "recommended_action": "Continue monitoring and retain evidence."
+      }
+    ]
+  },
+  "analyst_observations": [
+    "All indicators and threat intelligence results in this example are synthetic.",
+    "Mock enrichment results do not represent actual vendor reputation findings.",
+    "A vendor detection alone does not confirm malicious activity.",
+    "Historical abuse reports require contextual validation.",
+    "Correlate network activity with endpoint and identity telemetry."
+  ],
+  "investigation_checklist": [
+    "Validate the source and destination IP addresses.",
+    "Review connection timestamps, ports and protocols.",
+    "Identify the process responsible for the connection.",
+    "Check DNS queries and proxy or firewall logs.",
+    "Correlate the activity with endpoint detection telemetry.",
+    "Review related alerts for the same user and hostname.",
+    "Document findings before closing or escalating the incident."
+  ],
+  "analyst_conclusion": "Automated assessment completed using synthetic lab data and mock threat intelligence. Manual investigation is required before determining whether activity represents a security incident.",
+  "limitations": [
+    "This report uses synthetic alert and mock enrichment data only.",
+    "No live VirusTotal or AbuseIPDB lookups were performed.",
+    "All IP addresses belong to reserved documentation ranges.",
+    "Missing intelligence is not evidence of a clean indicator.",
+    "The risk score is a triage heuristic, not a probability of compromise.",
+    "No containment or remediation action was performed."
+  ]
+}

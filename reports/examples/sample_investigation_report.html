@@ -1,0 +1,209 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SOC Investigation Report</title>
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #f3f5f8;
+                color: #202938;
+                margin: 0;
+                padding: 30px;
+            }
+
+            .container {
+                max-width: 1050px;
+                margin: auto;
+                background: white;
+                padding: 32px;
+                border-radius: 10px;
+            }
+
+            h1, h2 {
+                color: #172b4d;
+            }
+
+            h2 {
+                border-bottom: 1px solid #e5e7eb;
+                padding-bottom: 9px;
+                margin-top: 30px;
+            }
+
+            .summary {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .metric {
+                background: #f3f5f8;
+                padding: 18px;
+                border-radius: 8px;
+                flex: 1;
+                min-width: 150px;
+            }
+
+            .metric strong {
+                display: block;
+                font-size: 25px;
+                margin-top: 8px;
+            }
+
+            .risk {
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+
+            .risk.critical { color: #b91c1c; }
+            .risk.high { color: #c2410c; }
+            .risk.medium { color: #a16207; }
+            .risk.low { color: #15803d; }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 15px;
+            }
+
+            th, td {
+                padding: 12px;
+                border: 1px solid #e5e7eb;
+                text-align: left;
+                overflow-wrap: anywhere;
+            }
+
+            th {
+                background: #f3f5f8;
+            }
+
+            li {
+                margin: 9px 0;
+            }
+
+            .notice {
+                background: #fff7ed;
+                padding: 15px;
+                border-left: 4px solid #ea580c;
+                margin-top: 20px;
+            }
+
+            .footer {
+                margin-top: 35px;
+                color: #64748b;
+                font-size: 12px;
+            }
+
+            @media print {
+                body { background: white; padding: 0; }
+                .container { max-width: none; }
+            }
+        </style>
+    </head>
+
+    <body>
+    <div class="container">
+
+        <h1>SOC Investigation Report</h1>
+        
+        <div class="notice">
+            <strong>SYNTHETIC LAB DATA - NOT REAL SECURITY TELEMETRY</strong>
+            <p>OFFLINE MOCK MODE - NO LIVE API LOOKUPS</p>
+        </div>
+        
+        <p><strong>Report ID:</strong>
+            REPORT-DEMO-001</p>
+        <p><strong>Generated:</strong>
+            2026-11-13T13:04:07.509762+00:00</p>
+
+        <h2>1. Alert Summary</h2>
+        <p><strong>Alert ID:</strong> DEMO-INC-001</p>
+        <p><strong>Alert Name:</strong> Suspicious Outbound Connection</p>
+        <p><strong>Severity:</strong> medium</p>
+        <p><strong>Detection Source:</strong> Microsoft Sentinel (simulated lab alert)</p>
+        <p><strong>Username:</strong> lab-user</p>
+        <p><strong>Hostname:</strong> LAB-WINDOWS-01</p>
+        <p><strong>Description:</strong> Synthetic lab alert: A user accessed https://example.com/login from documentation IP 203.0.113.25. Downloaded file SHA256: a3f5c8d1e2b4a697f0c3d5e8b1a4c6f9d2e5b8a1c4f7d0e3b6a9c2f5d8e1b4a7. File MD5: d41d8cd98f00b204e9800998ecf8427e. File SHA1: da39a3ee5e6b4b0d3255bfef95601890afd80709.</p>
+
+        <h2>2. Risk Assessment</h2>
+
+        <div class="summary">
+            <div class="metric">
+                Risk Score
+                <strong>15/100</strong>
+            </div>
+
+            <div class="metric">
+                Risk Level
+                <strong class="risk low">
+                    Low
+                </strong>
+            </div>
+        </div>
+
+        <p><strong>Recommended Action:</strong>
+            Continue monitoring and retain evidence.</p>
+
+        <h2>3. Indicators of Compromise</h2>
+
+        <h3>IP Addresses</h3>
+        <ul>
+<li><strong>192.0.2.10</strong> - Reserved documentation IP (TEST-NET) — Reputation checked: No</li><li><strong>198.51.100.25</strong> - Reserved documentation IP (TEST-NET) — Reputation checked: No</li><li><strong>203.0.113.25</strong> - Reserved documentation IP (TEST-NET) — Reputation checked: No</li>
+</ul>
+
+        <h3>Domains</h3>
+        <ul><li>example.com</li></ul>
+
+        <h3>URLs</h3>
+        <ul><li>https://example.com/login</li></ul>
+
+        <h3>File Hashes</h3>
+        <p><strong>md5:</strong> d41d8cd98f00b204e9800998ecf8427e</p><p><strong>sha1:</strong> da39a3ee5e6b4b0d3255bfef95601890afd80709</p><p><strong>sha256:</strong> a3f5c8d1e2b4a697f0c3d5e8b1a4c6f9d2e5b8a1c4f7d0e3b6a9c2f5d8e1b4a7</p>
+
+        <h2>4. IP Risk Details</h2>
+
+        <table>
+            <tr>
+                <th>IP Address</th>
+                <th>Score</th>
+                <th>Risk</th>
+                <th>VT Malicious</th>
+                <th>AbuseIPDB Confidence</th>
+            </tr>
+            
+            <tr>
+                <td>203.0.113.25</td>
+                <td>15/100</td>
+                <td>Low</td>
+                <td>0</td>
+                <td>0%</td>
+            </tr>
+            
+        </table>
+
+        <h2>5. Analyst Observations</h2>
+        <ul><li>All indicators and threat intelligence results in this example are synthetic.</li><li>Mock enrichment results do not represent actual vendor reputation findings.</li><li>A vendor detection alone does not confirm malicious activity.</li><li>Historical abuse reports require contextual validation.</li><li>Correlate network activity with endpoint and identity telemetry.</li></ul>
+
+        <h2>6. Investigation Checklist</h2>
+        <ul><li>Validate the source and destination IP addresses.</li><li>Review connection timestamps, ports and protocols.</li><li>Identify the process responsible for the connection.</li><li>Check DNS queries and proxy or firewall logs.</li><li>Correlate the activity with endpoint detection telemetry.</li><li>Review related alerts for the same user and hostname.</li><li>Document findings before closing or escalating the incident.</li></ul>
+
+        <div class="notice">
+            <strong>Analyst Conclusion</strong>
+            <p>Automated assessment completed using synthetic lab data and mock threat intelligence. Manual investigation is required before determining whether activity represents a security incident.</p>
+        </div>
+
+        <h2>7. Limitations</h2>
+        <ul><li>This report uses synthetic alert and mock enrichment data only.</li><li>No live VirusTotal or AbuseIPDB lookups were performed.</li><li>All IP addresses belong to reserved documentation ranges.</li><li>Missing intelligence is not evidence of a clean indicator.</li><li>The risk score is a triage heuristic, not a probability of compromise.</li><li>No containment or remediation action was performed.</li></ul>
+
+        <div class="footer">
+            Generated automatically by the Blue Team Automation Lab.
+            This report requires analyst validation.
+        </div>
+
+    </div>
+    </body>
+    </html>
+    

@@ -1,4 +1,3 @@
-print("REPORT GENERATOR FILE LOADED")
 import json
 import html
 from pathlib import Path
@@ -193,7 +192,18 @@ def generate_html(report):
     severity_class = safe_text(
         str(risk.get("overall_level", "unknown")).lower()
     )
+    data_classification = report.get("data_classification")
+    enrichment_mode = report.get("enrichment_mode")
 
+    data_notice = ""
+
+    if data_classification or enrichment_mode:
+        data_notice = f"""
+        <div class="notice">
+            <strong>{safe_text(data_classification or "DATA CLASSIFICATION NOT PROVIDED")}</strong>
+            <p>{safe_text(enrichment_mode or "")}</p>
+        </div>
+        """
     return f"""
     <!DOCTYPE html>
     <html lang="en">
@@ -304,6 +314,7 @@ def generate_html(report):
     <div class="container">
 
         <h1>SOC Investigation Report</h1>
+        {data_notice}
         <p><strong>Report ID:</strong>
             {safe_text(report.get('report_id'))}</p>
         <p><strong>Generated:</strong>
@@ -344,7 +355,7 @@ def generate_html(report):
 {
     "".join(
         f"<li><strong>{safe_text(item['address'])}</strong>"
-        f" — {safe_text(item['classification'])}"
+        f" - {safe_text(item['classification'])}"
         f" — Reputation checked: "
         f"{'Yes' if item['external_reputation_checked'] else 'No'}"
         f"</li>"
